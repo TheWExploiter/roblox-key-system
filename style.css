@@ -1,34 +1,22 @@
-
 body {
   background: #111;
-  color: #eee;
+  color: white;
   font-family: monospace;
   text-align: center;
-  margin-top: 100px;
 }
-.container {
-  max-width: 400px;
-  margin: auto;
-  background: #222;
-  padding: 20px;
-  border-radius: 12px;
+
+code {
+  font-size: 1.5em;
+  font-weight: bold;
 }
+
 button {
   padding: 10px 20px;
-  background: #444;
-  color: white;
+  background-color: #555;
   border: none;
   cursor: pointer;
-  margin-top: 10px;
 }
-pre {
-  background: #333;
-  padding: 10px;
-  border-radius: 8px;
-  font-size: 1.2em;
-}
-.note {
-  margin-top: 20px;
-  font-size: 0.8em;
-  color: #aaa;
+
+button:hover {
+  background-color: #777;
 }
