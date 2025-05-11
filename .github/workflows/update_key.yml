@@ -1,0 +1,22 @@
+name: Update Key
+
+on:
+  schedule:
+    - cron: "0 0 * * *"
+  workflow_dispatch:
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Generate New Key
+        run: |
+          echo $(openssl rand -hex 4) > key.txt
+      - name: Push Key
+        run: |
+          git config --global user.email "you@example.com"
+          git config --global user.name "GitHub Action"
+          git add key.txt
+          git commit -m "Update daily key"
+          git push
