@@ -3,57 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Slap Battles Script Key System</title>
-  <script>
-    // Helper function to generate a unique key
-    const generateKey = () => Math.random().toString(36).substring(2, 15);
-
-    // Function to check for expired keys and generate a new one if needed
-    function loadKey() {
-      const keyData = JSON.parse(localStorage.getItem('keyData'));
-
-      if (keyData) {
-        const now = Date.now();
-        if (keyData.expires > now) {
-          // Key hasn't expired
-          document.getElementById('key').textContent = keyData.key;
-        } else {
-          // Expired key, delete and generate a new one
-          localStorage.removeItem('keyData');
-          generateAndDisplayNewKey();
-        }
-      } else {
-        // No key exists, generate a new one
-        generateAndDisplayNewKey();
-      }
-    }
-
-    // Function to generate and store a new key with expiration
-    function generateAndDisplayNewKey() {
-      const newKey = generateKey();
-      const expirationTime = Date.now() + 86400000; // 24 hours from now
-
-      // Store the new key and expiration time in localStorage
-      localStorage.setItem('keyData', JSON.stringify({ key: newKey, expires: expirationTime }));
-
-      // Display the new key
-      document.getElementById('key').textContent = newKey;
-    }
-
-    // Copy the key to the clipboard
-    function copyKey() {
-      const key = document.getElementById('key').textContent;
-      navigator.clipboard.writeText(key)
-        .then(() => alert("Key copied!"))
-        .catch(() => alert("Failed to copy the key."));
-    }
-
-    // Load the key when the page is loaded
-    window.onload = loadKey;
-  </script>
+  <title>Slap Battles Key System</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
 </head>
-<body style="background:#111;color:white;font-family:monospace;text-align:center;">
-  <h1>Slap Battles Script Key System</h1>
+<body>
+  <h1>Slap Battles Key System</h1>
   <p>Your Key:</p>
   <code id="key">Loading...</code><br><br>
   <button onclick="copyKey()">Copy Key</button>
